@@ -300,3 +300,57 @@ if (kakaoShare) {
     window.setTimeout(setup, 2200);
   }
 })();
+// Film-strip gallery: keep the 3x3 preview in place and support arrows/swipes without opening a modal.
+(() => {
+  const viewer = document.querySelector('.gallery-viewer');
+  const grid = document.querySelector('#gallery-grid');
+  if (!viewer || !grid || !Array.isArray(wedding.photos)) return;
+  const rows = [[], [], []];
+  wedding.photos.forEach((photo, index) => rows[index % 3].push(photo));
+  grid.replaceChildren();
+  rows.forEach((photos, rowIndex) => {
+    const row = document.createElement('div');
+    row.className = 'gallery-row';
+    row.setAttribute('aria-label', (rowIndex + 1) + '번째 사진 행');
+    const track = document.createElement('div');
+    track.className = 'gallery-row-track';
+    track.dataset.direction = rowIndex === 1 ? 'ltr' : 'rtl';
+    [...photos, ...photos].forEach((photo, index) => {
+      const item = document.createElement('figure');
+      item.className = 'gallery-item';
+      const image = document.createElement('img');
+      image.src = photo.src;
+      image.alt = photo.alt;
+      image.loading = index < 6 ? 'eager' : 'lazy';
+      item.append(image);
+      track.append(item);
+    });
+    row.append(track);
+    grid.append(row);
+  });
+  const tracks = [...grid.querySelectorAll('.gallery-row-track')];
+  const offsets = [0, 0, 0];
+  const move = direction => {
+    viewer.classList.add('is-manual');
+    tracks.forEach((track, rowIndex) => {
+      const item = track.querySelector('.gallery-item');
+      if (!item) return;
+      const count = Math.max(1, track.children.length / 2);
+      const motion = rowIndex === 1 ? -1 : 1;
+      offsets[rowIndex] = (offsets[rowIndex] + direction * motion + count) % count;
+      const gap = parseFloat(getComputedStyle(track).gap || '5') || 5;
+      const distance = (item.getBoundingClientRect().width + gap) * offsets[rowIndex] * motion;
+      track.style.transform = 'translateX(' + (-distance) + 'px)';
+    });
+  };
+  document.querySelector('#gallery-prev')?.addEventListener('click', () => move(-1));
+  document.querySelector('#gallery-next')?.addEventListener('click', () => move(1));
+  let startX = null;
+  viewer.addEventListener('pointerdown', event => { startX = event.clientX; });
+  viewer.addEventListener('pointerup', event => {
+    if (startX === null) return;
+    const delta = event.clientX - startX;
+    startX = null;
+    if (Math.abs(delta) > 28) move(delta < 0 ? 1 : -1);
+  });
+})();
