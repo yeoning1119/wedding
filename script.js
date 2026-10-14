@@ -278,3 +278,25 @@ if (kakaoShare) {
     try { await navigator.clipboard.writeText(url); notify('초대장 링크를 복사했습니다. 카카오톡에 붙여넣어 주세요.'); } catch { window.prompt('초대장 링크를 복사해 주세요.', url); }
   });
 })();
+// Let the Kakao SDK own the button click so the Feed card opens on mobile.
+(() => {
+  const existing = document.querySelector('[data-kakao-share]');
+  if (!existing) return;
+  const button = existing.cloneNode(true);
+  existing.replaceWith(button);
+  const setup = () => {
+    if (!window.Kakao || !Kakao.Share?.createDefaultButton) return false;
+    if (!Kakao.isInitialized()) Kakao.init('a7dab9fc4a97e4842924a8662d863adb');
+    Kakao.Share.createDefaultButton({
+      container: button,
+      objectType: 'feed',
+      content: { title: '김영빈 ❤️ 장하연', description: '2026년 12월 12일 토요일 오후 2시 40분 · 빌라드지디 안양', imageUrl: 'https://yeoning1119.github.io/wedding/assets/hero-main/hero-01.jpg', link: { mobileWebUrl: button.dataset.shareUrl, webUrl: button.dataset.shareUrl } },
+      buttons: [{ title: '청첩장 보기', link: { mobileWebUrl: button.dataset.shareUrl, webUrl: button.dataset.shareUrl } }]
+    });
+    return true;
+  };
+  if (!setup()) {
+    window.setTimeout(setup, 800);
+    window.setTimeout(setup, 2200);
+  }
+})();
