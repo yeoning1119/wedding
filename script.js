@@ -241,7 +241,7 @@ const kakaoShare = document.querySelector('[data-kakao-share]');
 if (kakaoShare) {
   kakaoShare.addEventListener('click', async () => {
     const invitationUrl = kakaoShare.dataset.shareUrl || `${window.location.origin}${window.location.pathname}`;
-    const shareData = { title: '김영빈 & 장하연의 결혼식 초대장', text: `김영빈 & 장하연의 결혼식에 초대합니다.\n${invitationUrl}`, url: invitationUrl };
+    const shareData = { title: '김영빈 ❤️ 장하연', text: `김영빈 ❤️ 장하연의 결혼식에 초대합니다.\n${invitationUrl}`, url: invitationUrl };
     if (navigator.share) {
       try { await navigator.share(shareData); return; }
       catch (error) { if (error?.name === 'AbortError') return; }
