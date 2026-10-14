@@ -254,3 +254,27 @@ if (kakaoShare) {
     }
   });
 }
+// Rebind the share button so Kakao's Feed card is preferred over the native link sheet.
+(() => {
+  const originalButton = document.querySelector('[data-kakao-share]');
+  if (!originalButton) return;
+  const button = originalButton.cloneNode(true);
+  originalButton.replaceWith(button);
+  const key = 'a7dab9fc4a97e4842924a8662d863adb';
+  const sendCard = () => {
+    if (!window.Kakao || typeof Kakao.init !== 'function') return false;
+    if (!Kakao.isInitialized()) Kakao.init(key);
+    if (!Kakao.Share?.sendDefault) return false;
+    const url = button.dataset.shareUrl || window.location.href;
+    Kakao.Share.sendDefault({ objectType: 'feed', content: { title: '김영빈 ❤️ 장하연', description: '2026년 12월 12일 토요일 오후 2시 40분 · 빌라드지디 안양', imageUrl: 'https://yeoning1119.github.io/wedding/assets/hero-main/hero-01.jpg', link: { mobileWebUrl: url, webUrl: url } }, buttons: [{ title: '청첩장 보기', link: { mobileWebUrl: url, webUrl: url } }] });
+    return true;
+  };
+  button.addEventListener('click', async () => {
+    if (sendCard()) return;
+    await new Promise(resolve => setTimeout(resolve, 500));
+    if (sendCard()) return;
+    const url = button.dataset.shareUrl || window.location.href;
+    if (navigator.share) { try { await navigator.share({ title: '김영빈 ❤️ 장하연', text: '김영빈 ❤️ 장하연의 결혼식에 초대합니다.', url }); return; } catch (error) { if (error?.name === 'AbortError') return; } }
+    try { await navigator.clipboard.writeText(url); notify('초대장 링크를 복사했습니다. 카카오톡에 붙여넣어 주세요.'); } catch { window.prompt('초대장 링크를 복사해 주세요.', url); }
+  });
+})();
