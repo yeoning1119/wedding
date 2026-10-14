@@ -237,12 +237,12 @@ if (bgm && bgmToggle) {
 }
 
 // Use the phone's native share sheet so KakaoTalk appears as a real share target.
-const kakaoShare = document.querySelector('[data-kakao-share]');
+const kakaoShare = document.querySelector('[data-kakao-share]');const kakaoJavascriptKey = 'a7dab9fc4a97e4842924a8662d863adb';if (window.Kakao && !Kakao.isInitialized()) Kakao.init(kakaoJavascriptKey);
 if (kakaoShare) {
   kakaoShare.addEventListener('click', async () => {
     const invitationUrl = kakaoShare.dataset.shareUrl || `${window.location.origin}${window.location.pathname}`;
     const shareData = { title: '김영빈 ❤️ 장하연', text: `김영빈 ❤️ 장하연의 결혼식에 초대합니다.\n${invitationUrl}`, url: invitationUrl };
-    if (navigator.share) {
+    if (window.Kakao?.isInitialized()) {      try {        Kakao.Share.sendDefault({          objectType: 'feed',          content: {            title: '김영빈 ❤️ 장하연',            description: '2026년 12월 12일 토요일 오후 2시 40분 · 빌라드지디 안양',            imageUrl: 'https://yeoning1119.github.io/wedding/assets/hero-main/hero-01.jpg',            link: { mobileWebUrl: invitationUrl, webUrl: invitationUrl }          },          buttons: [{ title: '청첩장 보기', link: { mobileWebUrl: invitationUrl, webUrl: invitationUrl } }]        });        return;      } catch (error) {        console.warn('KakaoTalk share failed; using the browser share fallback.', error);      }    }    if (navigator.share) {
       try { await navigator.share(shareData); return; }
       catch (error) { if (error?.name === 'AbortError') return; }
     }
