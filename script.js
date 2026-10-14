@@ -2,60 +2,48 @@
 // 실제 예식 정보가 정해지면 HTML과 아래 설정을 함께 변경하세요.
 const wedding = {
   date: '2026-12-12T14:40:00+09:00',
-  contacts: { '신랑': '010-2554-4742', '신부': '010-7508-9856' },
-  accounts: { '신랑': '국민은행 700102-01-141000', '신부': '신한은행 110-383-580501' },
+  accounts: { '신랑': '국민은행 700102-01-141000', '신랑-김현태': '국민은행 004 01 0475 964', '신랑-김길래': '농협 211031-56-071249', '신부': '신한은행 110-383-580501', '신부-장보영': '기업은행 01023889856' },
   photos: [
-    { src: 'assets/final-gallery/02-01.jpg', alt: '김영빈과 장하연의 웨딩 사진 1' },
-    { src: 'assets/final-gallery/02-02.jpg', alt: '김영빈과 장하연의 웨딩 사진 2' },
-    { src: 'assets/final-gallery/02-03.jpg', alt: '김영빈과 장하연의 웨딩 사진 3' },
-    { src: 'assets/final-gallery/03-01.jpg', alt: '김영빈과 장하연의 웨딩 사진 4' },
-    { src: 'assets/final-gallery/03-02.jpg', alt: '김영빈과 장하연의 웨딩 사진 5' },
-    { src: 'assets/final-gallery/03-03.jpg', alt: '김영빈과 장하연의 웨딩 사진 6' },
-    { src: 'assets/final-gallery/04-01.jpg', alt: '김영빈과 장하연의 웨딩 사진 7' },
-    { src: 'assets/final-gallery/04-02.jpg', alt: '김영빈과 장하연의 웨딩 사진 8' },
-    { src: 'assets/final-gallery/04-03.jpg', alt: '김영빈과 장하연의 웨딩 사진 9' },
-    { src: 'assets/final-gallery/04-04.jpg', alt: '김영빈과 장하연의 웨딩 사진 10' },
-    { src: 'assets/final-gallery/05-01.jpg', alt: '김영빈과 장하연의 웨딩 사진 11' },
-    { src: 'assets/final-gallery/05-02.jpg', alt: '김영빈과 장하연의 웨딩 사진 12' },
-    { src: 'assets/final-gallery/07-01.jpg', alt: '김영빈과 장하연의 웨딩 사진 13' },
-    { src: 'assets/final-gallery/07-02.jpg', alt: '김영빈과 장하연의 웨딩 사진 14' },
-    { src: 'assets/final-gallery/08-01.jpg', alt: '김영빈과 장하연의 웨딩 사진 15' },
-    { src: 'assets/final-gallery/08-02.jpg', alt: '김영빈과 장하연의 웨딩 사진 16' },
-    { src: 'assets/final-gallery/08-03.jpg', alt: '김영빈과 장하연의 웨딩 사진 17' },
-    { src: 'assets/final-gallery/09-01.jpg', alt: '김영빈과 장하연의 웨딩 사진 18' },
-    { src: 'assets/final-gallery/09-02.jpg', alt: '김영빈과 장하연의 웨딩 사진 19' },
-    { src: 'assets/final-gallery/09-03.jpg', alt: '김영빈과 장하연의 웨딩 사진 20' },
-    { src: 'assets/final-gallery/09-04.jpg', alt: '김영빈과 장하연의 웨딩 사진 21' },
-    { src: 'assets/final-gallery/09-05.jpg', alt: '김영빈과 장하연의 웨딩 사진 22' },
-    { src: 'assets/final-gallery/10-01.jpg', alt: '김영빈과 장하연의 웨딩 사진 23' },
-    { src: 'assets/final-gallery/10-02.jpg', alt: '김영빈과 장하연의 웨딩 사진 24' },
-    { src: 'assets/final-gallery/10-03.jpg', alt: '김영빈과 장하연의 웨딩 사진 25' },
-    { src: 'assets/final-gallery/12-01.jpg', alt: '김영빈과 장하연의 웨딩 사진 26' },
-    { src: 'assets/final-gallery/12-02.jpg', alt: '김영빈과 장하연의 웨딩 사진 27' },
-    { src: 'assets/final-gallery/12-03.jpg', alt: '김영빈과 장하연의 웨딩 사진 28' },
-    { src: 'assets/final-gallery/12-04.jpg', alt: '김영빈과 장하연의 웨딩 사진 29' },
-    { src: 'assets/final-gallery/13-01.jpg', alt: '김영빈과 장하연의 웨딩 사진 30' },
-    { src: 'assets/final-gallery/13-02.jpg', alt: '김영빈과 장하연의 웨딩 사진 31' },
-    { src: 'assets/final-gallery/13-03.jpg', alt: '김영빈과 장하연의 웨딩 사진 32' },
-    { src: 'assets/final-gallery/13-04.jpg', alt: '김영빈과 장하연의 웨딩 사진 33' },
-    { src: 'assets/final-gallery/13-05.jpg', alt: '김영빈과 장하연의 웨딩 사진 34' },
-    { src: 'assets/final-gallery/14-01.jpg', alt: '김영빈과 장하연의 웨딩 사진 35' },
-    { src: 'assets/final-gallery/14-02.jpg', alt: '김영빈과 장하연의 웨딩 사진 36' },
-    { src: 'assets/final-gallery/15-01.jpg', alt: '김영빈과 장하연의 웨딩 사진 37' },
-    { src: 'assets/final-gallery/15-02.jpg', alt: '김영빈과 장하연의 웨딩 사진 38' },
-    { src: 'assets/final-gallery/17-01.jpg', alt: '김영빈과 장하연의 웨딩 사진 39' },
-    { src: 'assets/final-gallery/17-02.jpg', alt: '김영빈과 장하연의 웨딩 사진 40' },
-    { src: 'assets/final-gallery/18-01.jpg', alt: '김영빈과 장하연의 웨딩 사진 41' },
-    { src: 'assets/final-gallery/18-02.jpg', alt: '김영빈과 장하연의 웨딩 사진 42' },
-    { src: 'assets/final-gallery/18-03.jpg', alt: '김영빈과 장하연의 웨딩 사진 43' },
-    { src: 'assets/final-gallery/18-04.jpg', alt: '김영빈과 장하연의 웨딩 사진 44' },
-    { src: 'assets/final-gallery/18-05.jpg', alt: '김영빈과 장하연의 웨딩 사진 45' },
-    { src: 'assets/final-gallery/19-01.jpg', alt: '김영빈과 장하연의 웨딩 사진 46' },
-    { src: 'assets/final-gallery/19-02.jpg', alt: '김영빈과 장하연의 웨딩 사진 47' },
-    { src: 'assets/final-gallery/20-01.jpg', alt: '김영빈과 장하연의 웨딩 사진 48' },
-    { src: 'assets/final-gallery/20-02.jpg', alt: '김영빈과 장하연의 웨딩 사진 49' },
-    { src: 'assets/final-gallery/20-03.jpg', alt: '김영빈과 장하연의 웨딩 사진 50' },
-    { src: 'assets/final-gallery/20-04.jpg', alt: '김영빈과 장하연의 웨딩 사진 51' }
+    { src: 'assets/new-gallery/photo-01.jpg', alt: '김영빈과 장하연의 웨딩 사진 1' },
+    { src: 'assets/new-gallery/photo-02.jpg', alt: '김영빈과 장하연의 웨딩 사진 2' },
+    { src: 'assets/new-gallery/photo-03.jpg', alt: '김영빈과 장하연의 웨딩 사진 3' },
+    { src: 'assets/new-gallery/photo-04.jpg', alt: '김영빈과 장하연의 웨딩 사진 4' },
+    { src: 'assets/new-gallery/photo-05.jpg', alt: '김영빈과 장하연의 웨딩 사진 5' },
+    { src: 'assets/new-gallery/photo-06.jpg', alt: '김영빈과 장하연의 웨딩 사진 6' },
+    { src: 'assets/new-gallery/photo-07.jpg', alt: '김영빈과 장하연의 웨딩 사진 7' },
+    { src: 'assets/new-gallery/photo-08.jpg', alt: '김영빈과 장하연의 웨딩 사진 8' },
+    { src: 'assets/new-gallery/photo-09.jpg', alt: '김영빈과 장하연의 웨딩 사진 9' },
+    { src: 'assets/new-gallery/photo-10.jpg', alt: '김영빈과 장하연의 웨딩 사진 10' },
+    { src: 'assets/new-gallery/photo-11.jpg', alt: '김영빈과 장하연의 웨딩 사진 11' },
+    { src: 'assets/new-gallery/photo-12.jpg', alt: '김영빈과 장하연의 웨딩 사진 12' },
+    { src: 'assets/new-gallery/photo-13.jpg', alt: '김영빈과 장하연의 웨딩 사진 13' },
+    { src: 'assets/new-gallery/photo-14.jpg', alt: '김영빈과 장하연의 웨딩 사진 14' },
+    { src: 'assets/new-gallery/photo-15.jpg', alt: '김영빈과 장하연의 웨딩 사진 15' },
+    { src: 'assets/new-gallery/photo-16.jpg', alt: '김영빈과 장하연의 웨딩 사진 16' },
+    { src: 'assets/new-gallery/photo-17.jpg', alt: '김영빈과 장하연의 웨딩 사진 17' },
+    { src: 'assets/new-gallery/photo-18.jpg', alt: '김영빈과 장하연의 웨딩 사진 18' },
+    { src: 'assets/new-gallery/photo-19.jpg', alt: '김영빈과 장하연의 웨딩 사진 19' },
+    { src: 'assets/new-gallery/photo-20.jpg', alt: '김영빈과 장하연의 웨딩 사진 20' },
+    { src: 'assets/new-gallery/photo-21.jpg', alt: '김영빈과 장하연의 웨딩 사진 21' },
+    { src: 'assets/new-gallery/photo-22.jpg', alt: '김영빈과 장하연의 웨딩 사진 22' },
+    { src: 'assets/new-gallery/photo-23.jpg', alt: '김영빈과 장하연의 웨딩 사진 23' },
+    { src: 'assets/new-gallery/photo-24.jpg', alt: '김영빈과 장하연의 웨딩 사진 24' },
+    { src: 'assets/new-gallery/photo-25.jpg', alt: '김영빈과 장하연의 웨딩 사진 25' },
+    { src: 'assets/new-gallery/photo-26.jpg', alt: '김영빈과 장하연의 웨딩 사진 26' },
+    { src: 'assets/new-gallery/photo-27.jpg', alt: '김영빈과 장하연의 웨딩 사진 27' },
+    { src: 'assets/new-gallery/photo-28.jpg', alt: '김영빈과 장하연의 웨딩 사진 28' },
+    { src: 'assets/new-gallery/photo-29.jpg', alt: '김영빈과 장하연의 웨딩 사진 29' },
+    { src: 'assets/new-gallery/photo-30.jpg', alt: '김영빈과 장하연의 웨딩 사진 30' },
+    { src: 'assets/new-gallery/photo-31.jpg', alt: '김영빈과 장하연의 웨딩 사진 31' },
+    { src: 'assets/new-gallery/photo-32.jpg', alt: '김영빈과 장하연의 웨딩 사진 32' },
+    { src: 'assets/new-gallery/photo-33.jpg', alt: '김영빈과 장하연의 웨딩 사진 33' },
+    { src: 'assets/new-gallery/photo-34.jpg', alt: '김영빈과 장하연의 웨딩 사진 34' },
+    { src: 'assets/new-gallery/photo-35.jpg', alt: '김영빈과 장하연의 웨딩 사진 35' },
+    { src: 'assets/new-gallery/photo-36.jpg', alt: '김영빈과 장하연의 웨딩 사진 36' },
+    { src: 'assets/new-gallery/photo-37.jpg', alt: '김영빈과 장하연의 웨딩 사진 37' },
+    { src: 'assets/new-gallery/photo-38.jpg', alt: '김영빈과 장하연의 웨딩 사진 38' },
+    { src: 'assets/new-gallery/photo-39.jpg', alt: '김영빈과 장하연의 웨딩 사진 39' },
+    { src: 'assets/new-gallery/photo-40.jpg', alt: '김영빈과 장하연의 웨딩 사진 40' }
   ]
 };
 const toast = document.querySelector('#toast');
@@ -67,172 +55,6 @@ function notify(message) {
   toastTimer = setTimeout(() => toast.classList.remove('visible'), 3200);
 }
 
-const guestbookApiUrl = 'https://our-day-guestbook-hayeon.yeoning1119.chatgpt.site/guestbook';
-const photoApiUrl = 'https://our-day-guestbook-hayeon.yeoning1119.chatgpt.site';
-const guestbookPreview = document.querySelector('#guestbook-preview');
-const guestbookFullList = document.querySelector('#guestbook-full-list');
-const guestbookStatus = document.querySelector('#guestbook-status');
-const guestbookDialog = document.querySelector('#guestbook-dialog');
-const guestbookListDialog = document.querySelector('#guestbook-list-dialog');
-const guestbookEditDialog = document.querySelector('#guestbook-edit-dialog');
-const guestbookForm = document.querySelector('#guestbook-form');
-const guestbookEditForm = document.querySelector('#guestbook-edit-form');
-let guestbookEntries = [];
-let editingGuestbookId = null;
-function formatGuestbookDate(value) {
-  const date = new Date(value);
-  if (Number.isNaN(date.getTime())) return '';
-  return new Intl.DateTimeFormat('ko-KR', { month: 'numeric', day: 'numeric' }).format(date);
-}
-function createGuestbookCard(entry) {
-  const article = document.createElement('article');
-  article.className = 'guestbook-card';
-  const header = document.createElement('div');
-  header.className = 'guestbook-card-header';
-  const name = document.createElement('strong');
-  name.textContent = entry.name;
-  const edit = document.createElement('button');
-  edit.className = 'guestbook-edit-trigger';
-  edit.type = 'button';
-  edit.textContent = '⋯';
-  edit.setAttribute('aria-label', `${entry.name}님 방명록 수정 또는 삭제`);
-  edit.addEventListener('click', () => openEditGuestbook(entry.id));
-  header.append(name, edit);
-  const message = document.createElement('p');
-  message.textContent = entry.message;
-  const date = document.createElement('time');
-  date.dateTime = entry.created_at || '';
-  date.textContent = formatGuestbookDate(entry.created_at);
-  article.append(header, message, date);
-  return article;
-}
-function renderGuestbookEntries() {
-  const previewEntries = guestbookEntries.slice(0, 2);
-  guestbookPreview.replaceChildren();
-  guestbookFullList.replaceChildren();
-  if (!guestbookEntries.length) {
-    const empty = document.createElement('p');
-    empty.className = 'guestbook-empty';
-    empty.textContent = '첫 번째 축하 메시지를 남겨주세요.';
-    guestbookPreview.append(empty);
-    guestbookFullList.append(empty.cloneNode(true));
-    return;
-  }
-  previewEntries.forEach(entry => guestbookPreview.append(createGuestbookCard(entry)));
-  guestbookEntries.forEach(entry => guestbookFullList.append(createGuestbookCard(entry)));
-}
-async function loadGuestbook(silent = false) {
-  try {
-    const response = await fetch(guestbookApiUrl, { headers: { accept: 'application/json' }, cache: 'no-store' });
-    const payload = await response.json();
-    if (!response.ok) throw new Error(payload.error || '방명록을 불러오지 못했어요.');
-    guestbookEntries = Array.isArray(payload.entries) ? payload.entries : [];
-    renderGuestbookEntries();
-    if (guestbookStatus) guestbookStatus.textContent = '새 글이 올라오면 자동으로 보여요.';
-  } catch (error) {
-    if (guestbookStatus) guestbookStatus.textContent = silent ? '방명록을 잠시 불러오지 못했어요. 잠시 후 다시 시도해 주세요.' : '방명록을 불러오는 중이에요.';
-  }
-}
-function openGuestbookDialog() {
-  if (guestbookDialog?.showModal) guestbookDialog.showModal();
-  document.querySelector('#guestbook-name')?.focus();
-}
-function closeGuestbookDialog() { guestbookDialog?.close(); }
-function openGuestbookListDialog() { if (guestbookListDialog?.showModal) guestbookListDialog.showModal(); }
-function closeGuestbookListDialog() { guestbookListDialog?.close(); }
-function openEditGuestbook(id) {
-  const entry = guestbookEntries.find(item => String(item.id) === String(id));
-  if (!entry || !guestbookEditDialog) return;
-  editingGuestbookId = entry.id;
-  document.querySelector('#guestbook-edit-id').value = entry.id;
-  document.querySelector('#guestbook-edit-name').value = entry.name;
-  document.querySelector('#guestbook-edit-message').value = entry.message;
-  document.querySelector('#guestbook-edit-password').value = '';
-  guestbookEditDialog.showModal();
-  document.querySelector('#guestbook-edit-password')?.focus();
-}
-function closeEditGuestbook() { guestbookEditDialog?.close(); editingGuestbookId = null; }
-document.querySelector('[data-open-guestbook]')?.addEventListener('click', openGuestbookDialog);
-document.querySelector('[data-open-guestbook-list]')?.addEventListener('click', openGuestbookListDialog);
-document.querySelector('[data-close-guestbook]')?.addEventListener('click', closeGuestbookDialog);
-document.querySelector('[data-close-guestbook-list]')?.addEventListener('click', closeGuestbookListDialog);
-document.querySelector('[data-close-guestbook-edit]')?.addEventListener('click', closeEditGuestbook);
-guestbookForm?.addEventListener('submit', async event => {
-  event.preventDefault();
-  const submit = guestbookForm.querySelector('button[type="submit"]');
-  submit.disabled = true;
-  try {
-    const values = Object.fromEntries(new FormData(guestbookForm).entries());
-    const response = await fetch(guestbookApiUrl, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(values) });
-    const payload = await response.json();
-    if (!response.ok) throw new Error(payload.error || '방명록을 저장하지 못했어요.');
-    guestbookForm.reset(); closeGuestbookDialog(); notify('축하 메시지가 방명록에 남겨졌어요.'); await loadGuestbook();
-  } catch (error) { notify(error.message || '방명록을 저장하지 못했어요.'); }
-  finally { submit.disabled = false; }
-});
-guestbookEditForm?.addEventListener('submit', async event => {
-  event.preventDefault();
-  if (editingGuestbookId === null) return;
-  const submit = guestbookEditForm.querySelector('button[type="submit"]');
-  submit.disabled = true;
-  try {
-    const values = Object.fromEntries(new FormData(guestbookEditForm).entries());
-    const response = await fetch(`${guestbookApiUrl}/${editingGuestbookId}`, { method: 'PATCH', headers: { 'content-type': 'application/json' }, body: JSON.stringify(values) });
-    const payload = await response.json();
-    if (!response.ok) throw new Error(payload.error || '방명록을 수정하지 못했어요.');
-    closeEditGuestbook(); notify('방명록이 수정되었어요.'); await loadGuestbook();
-  } catch (error) { notify(error.message || '방명록을 수정하지 못했어요.'); }
-  finally { submit.disabled = false; }
-});
-document.querySelector('[data-delete-guestbook]')?.addEventListener('click', async () => {
-  if (editingGuestbookId === null || !window.confirm('이 방명록을 삭제할까요?')) return;
-  const password = document.querySelector('#guestbook-edit-password').value.trim();
-  if (!password) { notify('비밀번호를 입력해 주세요.'); return; }
-  try {
-    const response = await fetch(`${guestbookApiUrl}/${editingGuestbookId}`, { method: 'DELETE', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ password }) });
-    const payload = await response.json();
-    if (!response.ok) throw new Error(payload.error || '방명록을 삭제하지 못했어요.');
-    closeEditGuestbook(); notify('방명록이 삭제되었어요.'); await loadGuestbook();
-  } catch (error) { notify(error.message || '방명록을 삭제하지 못했어요.'); }
-});
-loadGuestbook();
-window.setInterval(() => loadGuestbook(true), 10000);
-
-const photoFiles = document.querySelector('#photo-files');
-const photoName = document.querySelector('#photo-uploader-name');
-const photoFileCount = document.querySelector('#photo-file-count');
-const photoUploadButton = document.querySelector('#photo-upload-button');
-const photoUploadStatus = document.querySelector('#photo-upload-status');
-photoFiles?.addEventListener('change', () => {
-  const count = photoFiles.files.length;
-  photoFileCount.textContent = count ? `${count}장 선택됨` : '선택된 사진이 없어요.';
-});
-photoUploadButton?.addEventListener('click', async () => {
-  const files = [...(photoFiles?.files || [])];
-  const name = photoName?.value.trim() || '';
-  if (!name) { notify('이름을 입력해 주세요.'); photoName?.focus(); return; }
-  if (!files.length) { notify('공유할 사진을 선택해 주세요.'); return; }
-  if (files.length > 40) { notify('한 번에 최대 40장까지 올릴 수 있어요.'); return; }
-  if (files.some(file => !file.type.startsWith('image/') || file.size > 10 * 1024 * 1024)) { notify('사진은 한 장당 10MB 이하의 이미지 파일만 올려 주세요.'); return; }
-  const form = new FormData();
-  form.append('name', name);
-  files.forEach(file => form.append('photos', file));
-  photoUploadButton.disabled = true;
-  photoUploadStatus.textContent = '사진을 올리는 중이에요.';
-  try {
-    const response = await fetch(`${photoApiUrl}/photos`, { method: 'POST', body: form });
-    const payload = await response.json();
-    if (!response.ok) throw new Error(payload.error || '사진을 올리지 못했어요.');
-    photoName.value = '';
-    photoFiles.value = '';
-    photoFileCount.textContent = '선택된 사진이 없어요.';
-    photoUploadStatus.textContent = `${payload.count || files.length}장의 사진이 저장되었어요. 공개 목록에는 표시되지 않아요.`;
-    notify('축하 사진이 비공개로 저장되었어요.');
-  } catch (error) {
-    photoUploadStatus.textContent = error.message || '사진을 올리지 못했어요.';
-    notify(photoUploadStatus.textContent);
-  } finally { photoUploadButton.disabled = false; }
-});
 async function copyText(value) {
   try {
     if (navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(value);
@@ -247,11 +69,6 @@ async function copyText(value) {
   } catch { window.prompt('아래 내용을 길게 눌러 복사해 주세요.', value); }
 }
 document.querySelectorAll('[data-copy]').forEach(button => button.addEventListener('click', () => copyText(button.dataset.copy)));
-document.querySelectorAll('[data-contact]').forEach(button => button.addEventListener('click', () => {
-  const phone = wedding.contacts[button.dataset.contact];
-  if (phone) window.location.href = `tel:${phone}`;
-  else notify('연락처 등록 후 이용할 수 있어요.');
-}));
 document.querySelectorAll('[data-account]').forEach(button => button.addEventListener('click', () => {
   const account = wedding.accounts[button.dataset.account];
   if (account) copyText(account); else notify('계좌번호 등록 후 이용할 수 있어요.');
@@ -312,35 +129,31 @@ function updateGalleryPhoto(index) {
 }
 function renderPhotos() {
   if (!wedding.photos.length) return;
-  const hero = document.querySelector('#hero-image');
-  if (hero) hero.src = wedding.photos[0].src;
   const grid = document.querySelector('#gallery-grid');
-  const button = document.createElement('button');
-  button.className = 'gallery-item is-visible';
-  button.type = 'button';
-  button.setAttribute('aria-label', '현재 사진 크게 보기');
-  galleryImage = document.createElement('img');
-  galleryImage.alt = wedding.photos[0].alt;
-  galleryImage.src = wedding.photos[0].src;
-  galleryImage.loading = 'eager';
-  button.append(galleryImage);
-  grid.append(button);
-  const moveGallery = (step) => updateGalleryPhoto(galleryIndex + step);
-  document.querySelector('[data-gallery-prev]')?.addEventListener('click', () => moveGallery(-1));
-  document.querySelector('[data-gallery-next]')?.addEventListener('click', () => moveGallery(1));
-  button.addEventListener('click', () => { showPhoto(galleryIndex); dialog.showModal(); document.body.style.overflow = 'hidden'; });
-  let touchStartX = 0;
-  button.addEventListener('touchstart', event => { touchStartX = event.changedTouches[0].clientX; }, { passive: true });
-  button.addEventListener('touchend', event => {
-    const delta = event.changedTouches[0].clientX - touchStartX;
-    if (Math.abs(delta) > 45) moveGallery(delta < 0 ? 1 : -1);
-  }, { passive: true });
-  updateGalleryPhoto(0);
+  if (!grid) return;
+  wedding.photos.slice(0, 9).forEach((photo, index) => {
+    const button = document.createElement('button');
+    button.className = 'gallery-item is-visible';
+    button.type = 'button';
+    button.setAttribute('aria-label', `${index + 1}번 사진 크게 보기`);
+    const image = document.createElement('img');
+    image.alt = photo.alt;
+    image.src = photo.src;
+    image.loading = index < 3 ? 'eager' : 'lazy';
+    button.append(image);
+    grid.append(button);
+    button.addEventListener('click', () => {
+      showPhoto(index);
+      dialog.showModal();
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  galleryImage = grid.querySelector('img');
 }
 
 const venueMapImage = document.querySelector('#venue-map-image');
 function openVenueMap() {
-  document.querySelector('#expanded-photo').src = 'assets/venue-map-styled.svg';
+  document.querySelector('#expanded-photo').src = 'assets/venue-map-user.png';
   document.querySelector('#expanded-photo').alt = '빌라드지디 안양 약도';
   document.querySelector('#photo-counter').textContent = '약도';
   dialog.classList.add('map-open');
@@ -370,4 +183,74 @@ function showHeroSlide(index) {
 }
 if (heroSlides.length > 1) {
   window.setInterval(() => showHeroSlide(heroSlideIndex + 1), 5200);
+}
+
+const revealTargets = document.querySelectorAll('.section > *, .hero-date > *, .cover-hero .scroll-cue, footer > *');
+revealTargets.forEach((element, index) => {
+  element.classList.add('reveal');
+  element.style.setProperty('--reveal-delay', `${Math.min(index % 6, 5) * 70}ms`);
+});
+if ('IntersectionObserver' in window) {
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      revealObserver.unobserve(entry.target);
+    });
+  }, { threshold: 0.14, rootMargin: '0px 0px -7% 0px' });
+  revealTargets.forEach(element => revealObserver.observe(element));
+} else {
+  revealTargets.forEach(element => element.classList.add('is-visible'));
+}
+
+// Once the handwritten title finishes, let the opening photograph return to color.
+const heroStage = document.querySelector('.hero-stage');
+const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+if (heroStage) {
+  if (reducedMotion) heroStage.classList.add('hero-revealed');
+  else window.setTimeout(() => heroStage.classList.add('hero-revealed'), 2450);
+}
+
+// Background music is started by an explicit tap so it works with mobile browser autoplay rules.
+const bgm = document.querySelector('#bgm');
+const bgmToggle = document.querySelector('#bgm-toggle');
+if (bgm && bgmToggle) {
+  const updateBgmButton = () => {
+    const isPlaying = !bgm.paused && !bgm.ended;
+    bgmToggle.classList.toggle('is-playing', isPlaying);
+    bgmToggle.setAttribute('aria-pressed', String(isPlaying));
+    bgmToggle.setAttribute('aria-label', isPlaying ? '배경음악 일시정지' : '배경음악 재생');
+    bgmToggle.querySelector('.bgm-label').textContent = isPlaying ? 'BGM ON' : 'BGM';
+  };
+  bgmToggle.addEventListener('click', async () => {
+    if (bgm.paused) {
+      try { await bgm.play(); }
+      catch { notify('화면을 한 번 더 눌러 음악을 재생해 주세요.'); }
+    } else {
+      bgm.pause();
+    }
+    updateBgmButton();
+  });
+  bgm.addEventListener('play', updateBgmButton);
+  bgm.addEventListener('pause', updateBgmButton);
+  updateBgmButton();
+}
+
+// Use the phone's native share sheet so KakaoTalk appears as a real share target.
+const kakaoShare = document.querySelector('[data-kakao-share]');
+if (kakaoShare) {
+  kakaoShare.addEventListener('click', async () => {
+    const invitationUrl = kakaoShare.dataset.shareUrl || `${window.location.origin}${window.location.pathname}`;
+    const shareData = { title: '김영빈 & 장하연의 결혼식 초대장', text: `김영빈 & 장하연의 결혼식에 초대합니다.\n${invitationUrl}`, url: invitationUrl };
+    if (navigator.share) {
+      try { await navigator.share(shareData); return; }
+      catch (error) { if (error?.name === 'AbortError') return; }
+    }
+    try {
+      await navigator.clipboard.writeText(invitationUrl);
+      notify('초대장 링크를 복사했습니다. 카카오톡에 붙여넣어 주세요.');
+    } catch {
+      window.prompt('초대장 링크를 복사해 카카오톡에 붙여넣어 주세요.', invitationUrl);
+    }
+  });
 }
