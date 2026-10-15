@@ -285,3 +285,15 @@ footer p,.footer-names{color:#222}
 .transport-block p{font-size:14px;line-height:1.95}
 .address-box span,.address-box strong{font-size:14px;line-height:1.8}
 .route-pill{font-size:14px;font-weight:600}
+
+
+/* Direction guide refinements. */
+.transport-detailed h3{font-weight:700}
+.transport-detailed .transport-lead,.parking-card .transport-block p,.parking-card .address-box span,.parking-card .address-box strong{font-size:13px}
+.route-line{gap:9px;align-items:center}
+.route-dot{display:inline-block;width:18px;height:18px;flex:0 0 18px;border-radius:50%}
+.route-label{font-weight:600;white-space:nowrap}
+.route-blue-text{color:#1678d0}
+.route-green-text{color:#2ca85b}
+.route-colon{color:#222}
+.route-line>span:last-child{min-width:0}
