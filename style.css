@@ -241,23 +241,4 @@ footer p,.footer-names{color:#222}
 .map-destination .nav-links{margin:12px 0 0}
 .kakao-share{font:12px/1.4 var(--serif);min-height:42px;padding:8px 14px}
 .kakao-share span{font-size:15px}
-/* Film-strip gallery: three moving rows with arrow and swipe controls. */
-.gallery-viewer{display:grid!important;grid-template-columns:28px minmax(0,1fr) 28px;align-items:center;gap:6px;margin:0;padding:0;overflow:hidden;touch-action:pan-y}
-.gallery-viewer .gallery-grid{display:grid!important;grid-template-columns:1fr!important;gap:5px!important;min-width:0;width:100%!important;overflow:hidden}
-.gallery-row{width:100%;min-width:0;overflow:hidden;position:relative}
-.gallery-row-track{display:flex;width:max-content;gap:5px;will-change:transform}
-.gallery-row-track .gallery-item{display:block!important;flex:0 0 var(--gallery-item-width);width:var(--gallery-item-width)!important;height:var(--gallery-item-width);aspect-ratio:1!important;pointer-events:none;cursor:default!important}
-.gallery-row-track .gallery-item img{pointer-events:none;user-select:none}
-.gallery-row-track .gallery-item:hover img{transform:none}
-.gallery-row:nth-child(1) .gallery-row-track{animation:gallery-film-rtl 25s linear infinite}
-.gallery-row:nth-child(2) .gallery-row-track{animation:gallery-film-ltr 20s linear infinite}
-.gallery-row:nth-child(3) .gallery-row-track{animation:gallery-film-rtl 31s linear infinite}
-.gallery-viewer.is-manual .gallery-row-track{animation:none}
-.gallery-arrow{display:grid!important;place-items:center;width:28px;height:46px;margin:0;padding:0;border:0;background:transparent;color:#222;font:36px/1 Georgia,'Times New Roman',serif}
-.gallery-arrow:active{background:#eee}
-.gallery-hint{display:block!important;margin:16px 0 0;color:#777;font-family:var(--serif);font-size:12px;line-height:1.7;text-align:center}
-@keyframes gallery-film-rtl{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@keyframes gallery-film-ltr{from{transform:translateX(-50%)}to{transform:translateX(0)}}
-@media(min-width:351px){.gallery-row-track .gallery-item{--gallery-item-width:calc((min(100vw,480px) - 126px)/3)}}
-@media(max-width:350px){.gallery-viewer{grid-template-columns:24px minmax(0,1fr) 24px;gap:4px}.gallery-row-track .gallery-item{--gallery-item-width:calc((min(100vw,480px) - 106px)/3)}.gallery-viewer .gallery-grid{gap:4px!important}.gallery-row-track{gap:4px}}
-@media(prefers-reduced-motion:reduce){.gallery-row-track{animation:none!important}}
+
