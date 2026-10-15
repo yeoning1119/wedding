@@ -37,7 +37,7 @@ footer{background:#2f2c2c;color:#fff;border-top:0;padding:58px 24px 40px}.footer
 /* Gallery is a single-photo viewer with swipe and tap controls. */
 .gallery-viewer{display:grid;grid-template-columns:38px minmax(0,1fr) 38px;align-items:center;gap:6px;padding:0 15px}
 .gallery-viewer .gallery-grid{min-width:0;display:block}
-.gallery-item{display:none;width:100%;touch-action:pan-y;cursor:zoom-in}
+.gallery-item{display:none;width:100%;touch-action:pan-y;}
 .gallery-item.is-visible{display:block}
 .gallery-arrow{width:34px;height:48px;border:0;background:transparent;color:#4b4544;font:38px/1 Georgia,'Times New Roman',serif;padding:0;display:grid;place-items:center}
 .gallery-arrow:active{background:#ece8e5}
@@ -45,7 +45,7 @@ footer{background:#2f2c2c;color:#fff;border-top:0;padding:58px 24px 40px}.footer
 .gallery-hint{margin-top:10px!important}
 
 .venue-map{margin:27px 0 16px;padding:9px;background:#f5f4f2;border:1px solid #ddd7d3}.venue-map img{display:block;width:100%;height:auto}.venue-map figcaption{font-size:11px;color:#817875;text-align:center;padding:7px 0 1px}.transport-detailed{text-align:left;margin-top:34px}.transport-detailed h3{font-family:var(--serif);font-size:15px;letter-spacing:.02em;margin:24px 0 7px}.transport-detailed p{font-size:13px;line-height:1.9;color:#68615f;margin:0 0 7px}.transport-detailed strong{font-weight:600;color:#46413f}.transport-note{border-top:1px solid var(--line);padding-top:17px;margin-top:22px!important;color:#817976!important}.transport-phone{font-size:12px!important;color:#8f7770!important;margin-top:18px!important}
-.venue-map img[role="button"]{cursor:zoom-in}.map-open .photo-controls{display:none}
+.venue-map img[role="button"]{}.map-open .photo-controls{display:none}
 .countdown{border-color:#d8d4d0;color:#4d4846;background:#f3f1ef}
 .calendar-days .wedding-day{background:#c39487;color:#fff;box-shadow:0 0 0 3px #ead8d2}
 .transport-detailed h3{font-family:var(--serif);font-size:14px;line-height:1.95;color:#433d3b;font-weight:600;margin:21px 0 7px}.transport-detailed p{font-family:var(--serif);font-size:14px;line-height:1.95;color:#6a6260;margin:0 0 9px}.transport-detailed strong{font-weight:400;color:inherit}.transport-note{font-size:14px!important;line-height:1.95!important}.transport-phone{font-size:14px!important}
