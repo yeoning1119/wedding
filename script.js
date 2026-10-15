@@ -207,7 +207,6 @@ if ('IntersectionObserver' in window) {
 const heroStage = document.querySelector('.hero-stage');
 const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 if (heroStage) {
-  bindGalleryControls();
   if (reducedMotion) heroStage.classList.add('hero-revealed');
   else window.setTimeout(() => heroStage.classList.add('hero-revealed'), 2450);
 }
@@ -237,160 +236,64 @@ if (bgm && bgmToggle) {
   updateBgmButton();
 }
 
-let galleryRowOffsets = [0, 0, 0];
-let galleryTracks = [];
-let galleryTouchStartX = null;
+// KakaoTalk Feed share. The native-share fallback keeps the button useful if a
+// browser blocks the Kakao CDN, but the Kakao card is always attempted first.
+const kakaoShare = document.querySelector('[data-kakao-share]');
+const kakaoJavascriptKey = 'a7dab9fc4a97e4842924a8662d863adb';
+const kakaoSdkScript = document.querySelector('script[src*="kakao_js_sdk"]');
+const kakaoSdkReady = window.Kakao
+  ? Promise.resolve(window.Kakao)
+  : kakaoSdkScript
+    ? new Promise((resolve, reject) => {
+        kakaoSdkScript.addEventListener('load', () => resolve(window.Kakao), { once: true });
+        kakaoSdkScript.addEventListener('error', reject, { once: true });
+      })
+    : Promise.reject(new Error('Kakao SDK script is missing.'));
 
-function renderPhotos() {
-  const grid = document.querySelector('#gallery-grid');
-  if (!grid || !wedding.photos.length) return;
-  grid.replaceChildren();
-  const rows = [[], [], []];
-  wedding.photos.forEach((photo, index) => rows[index % 3].push(photo));
-  rows.forEach((photos, rowIndex) => {
-    const row = document.createElement('div');
-    row.className = 'gallery-row';
-    row.setAttribute('aria-label', String(rowIndex + 1) + '번째 사진 행');
-    const track = document.createElement('div');
-    track.className = 'gallery-row-track';
-    track.dataset.direction = rowIndex === 1 ? 'ltr' : 'rtl';
-    [...photos, ...photos].forEach((photo, index) => {
-      const item = document.createElement('figure');
-      item.className = 'gallery-item';
-      const image = document.createElement('img');
-      image.alt = photo.alt;
-      image.src = photo.src;
-      image.loading = index < 6 ? 'eager' : 'lazy';
-      item.append(image);
-      track.append(item);
-    });
-    row.append(track);
-    grid.append(row);
-  });
-  galleryTracks = [...grid.querySelectorAll('.gallery-row-track')];
-}
+const initKakao = sdk => {
+  if (sdk && typeof sdk.init === 'function' && !sdk.isInitialized()) sdk.init(kakaoJavascriptKey);
+  return sdk;
+};
 
-function nudgeGallery(direction) {
-  if (!galleryTracks.length) return;
-  document.querySelector('.gallery-viewer')?.classList.add('is-manual');
-  galleryTracks.forEach((track, rowIndex) => {
-    const item = track.querySelector('.gallery-item');
-    if (!item) return;
-    const rowLength = Math.max(1, track.children.length / 2);
-    const motionDirection = rowIndex === 1 ? -1 : 1;
-    galleryRowOffsets[rowIndex] = (galleryRowOffsets[rowIndex] + direction * motionDirection + rowLength) % rowLength;
-    const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || '5') || 5;
-    const distance = (item.getBoundingClientRect().width + gap) * galleryRowOffsets[rowIndex] * motionDirection;
-    track.style.transform = 'translateX(' + (-distance) + 'px)';
-  });
-}
+if (window.Kakao) initKakao(window.Kakao);
 
-function bindGalleryControls() {
-  const viewer = document.querySelector('.gallery-viewer');
-  if (!viewer) return;
-  document.querySelector('#gallery-prev')?.addEventListener('click', () => nudgeGallery(-1));
-  document.querySelector('#gallery-next')?.addEventListener('click', () => nudgeGallery(1));
-  viewer.addEventListener('pointerdown', event => { galleryTouchStartX = event.clientX; });
-  viewer.addEventListener('pointerup', event => {
-    if (galleryTouchStartX === null) return;
-    const delta = event.clientX - galleryTouchStartX;
-    galleryTouchStartX = null;
-    if (Math.abs(delta) > 28) nudgeGallery(delta < 0 ? 1 : -1);
+const sendKakaoCard = invitationUrl => {
+  if (!window.Kakao?.isInitialized?.() || !window.Kakao.Share?.sendDefault) return false;
+  Kakao.Share.sendDefault({
+    objectType: 'feed',
+    content: {
+      title: '김영빈 ❤️ 장하연',
+      description: '2026년 12월 12일 토요일 오후 2시 40분 · 빌라드지디 안양',
+      imageUrl: 'https://yeoning1119.github.io/wedding/assets/hero-main/hero-01.jpg',
+      link: { mobileWebUrl: invitationUrl, webUrl: invitationUrl }
+    },
+    buttons: [{ title: '청첩장 보기', link: { mobileWebUrl: invitationUrl, webUrl: invitationUrl } }]
+  });
+  return true;
+};
+
+if (kakaoShare) {
+  kakaoShare.addEventListener('click', async () => {
+    const invitationUrl = kakaoShare.dataset.shareUrl || `${window.location.origin}${window.location.pathname}`;
+    try {
+      // This path is synchronous when the SDK is already loaded, preserving the
+      // user gesture required for KakaoTalk's picker window.
+      if (sendKakaoCard(invitationUrl)) return;
+      const sdk = initKakao(await kakaoSdkReady);
+      if (sdk && sendKakaoCard(invitationUrl)) return;
+    } catch (error) {
+      console.warn('KakaoTalk share failed; using the browser share fallback.', error);
+    }
+    const shareData = { title: '김영빈 ❤️ 장하연', text: `김영빈 ❤️ 장하연의 결혼식에 초대합니다.\n${invitationUrl}`, url: invitationUrl };
+    if (navigator.share) {
+      try { await navigator.share(shareData); return; }
+      catch (error) { if (error?.name === 'AbortError') return; }
+    }
+    try {
+      await navigator.clipboard.writeText(invitationUrl);
+      notify('초대장 링크를 복사했습니다. 카카오톡에 붙여넣어 주세요.');
+    } catch {
+      window.prompt('초대장 링크를 복사해 카카오톡에 붙여넣어 주세요.', invitationUrl);
+    }
   });
 }
-bindGalleryControls();
-  originalButton.replaceWith(button);
-  const key = 'a7dab9fc4a97e4842924a8662d863adb';
-  const sendCard = () => {
-    if (!window.Kakao || typeof Kakao.init !== 'function') return false;
-    if (!Kakao.isInitialized()) Kakao.init(key);
-    if (!Kakao.Share?.sendDefault) return false;
-    const url = button.dataset.shareUrl || window.location.href;
-    Kakao.Share.sendDefault({ objectType: 'feed', content: { title: '김영빈 ❤️ 장하연', description: '2026년 12월 12일 토요일 오후 2시 40분 · 빌라드지디 안양', imageUrl: 'https://yeoning1119.github.io/wedding/assets/hero-main/hero-01.jpg', link: { mobileWebUrl: url, webUrl: url } }, buttons: [{ title: '청첩장 보기', link: { mobileWebUrl: url, webUrl: url } }] });
-    return true;
-  };
-  button.addEventListener('click', async () => {
-    if (sendCard()) return;
-    await new Promise(resolve => setTimeout(resolve, 500));
-    if (sendCard()) return;
-    const url = button.dataset.shareUrl || window.location.href;
-    if (navigator.share) { try { await navigator.share({ title: '김영빈 ❤️ 장하연', text: '김영빈 ❤️ 장하연의 결혼식에 초대합니다.', url }); return; } catch (error) { if (error?.name === 'AbortError') return; } }
-    try { await navigator.clipboard.writeText(url); notify('초대장 링크를 복사했습니다. 카카오톡에 붙여넣어 주세요.'); } catch { window.prompt('초대장 링크를 복사해 주세요.', url); }
-  });
-})();
-// Let the Kakao SDK own the button click so the Feed card opens on mobile.
-(() => {
-  const existing = document.querySelector('[data-kakao-share]');
-  if (!existing) return;
-  const button = existing.cloneNode(true);
-  existing.replaceWith(button);
-  const setup = () => {
-    if (!window.Kakao || !Kakao.Share?.createDefaultButton) return false;
-    if (!Kakao.isInitialized()) Kakao.init('a7dab9fc4a97e4842924a8662d863adb');
-    Kakao.Share.createDefaultButton({
-      container: button,
-      objectType: 'feed',
-      content: { title: '김영빈 ❤️ 장하연', description: '2026년 12월 12일 토요일 오후 2시 40분 · 빌라드지디 안양', imageUrl: 'https://yeoning1119.github.io/wedding/assets/hero-main/hero-01.jpg', link: { mobileWebUrl: button.dataset.shareUrl, webUrl: button.dataset.shareUrl } },
-      buttons: [{ title: '청첩장 보기', link: { mobileWebUrl: button.dataset.shareUrl, webUrl: button.dataset.shareUrl } }]
-    });
-    return true;
-  };
-  if (!setup()) {
-    window.setTimeout(setup, 800);
-    window.setTimeout(setup, 2200);
-  }
-})();
-// Film-strip gallery: keep the 3x3 preview in place and support arrows/swipes without opening a modal.
-(() => {
-  const viewer = document.querySelector('.gallery-viewer');
-  const grid = document.querySelector('#gallery-grid');
-  if (!viewer || !grid || !Array.isArray(wedding.photos)) return;
-  const rows = [[], [], []];
-  wedding.photos.forEach((photo, index) => rows[index % 3].push(photo));
-  grid.replaceChildren();
-  rows.forEach((photos, rowIndex) => {
-    const row = document.createElement('div');
-    row.className = 'gallery-row';
-    row.setAttribute('aria-label', (rowIndex + 1) + '번째 사진 행');
-    const track = document.createElement('div');
-    track.className = 'gallery-row-track';
-    track.dataset.direction = rowIndex === 1 ? 'ltr' : 'rtl';
-    [...photos, ...photos].forEach((photo, index) => {
-      const item = document.createElement('figure');
-      item.className = 'gallery-item';
-      const image = document.createElement('img');
-      image.src = photo.src;
-      image.alt = photo.alt;
-      image.loading = index < 6 ? 'eager' : 'lazy';
-      item.append(image);
-      track.append(item);
-    });
-    row.append(track);
-    grid.append(row);
-  });
-  const tracks = [...grid.querySelectorAll('.gallery-row-track')];
-  const offsets = [0, 0, 0];
-  const move = direction => {
-    viewer.classList.add('is-manual');
-    tracks.forEach((track, rowIndex) => {
-      const item = track.querySelector('.gallery-item');
-      if (!item) return;
-      const count = Math.max(1, track.children.length / 2);
-      const motion = rowIndex === 1 ? -1 : 1;
-      offsets[rowIndex] = (offsets[rowIndex] + direction * motion + count) % count;
-      const gap = parseFloat(getComputedStyle(track).gap || '5') || 5;
-      const distance = (item.getBoundingClientRect().width + gap) * offsets[rowIndex] * motion;
-      track.style.transform = 'translateX(' + (-distance) + 'px)';
-    });
-  };
-  document.querySelector('#gallery-prev')?.addEventListener('click', () => move(-1));
-  document.querySelector('#gallery-next')?.addEventListener('click', () => move(1));
-  let startX = null;
-  viewer.addEventListener('pointerdown', event => { startX = event.clientX; });
-  viewer.addEventListener('pointerup', event => {
-    if (startX === null) return;
-    const delta = event.clientX - startX;
-    startX = null;
-    if (Math.abs(delta) > 28) move(delta < 0 ? 1 : -1);
-  });
-})();
