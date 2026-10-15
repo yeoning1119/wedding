@@ -276,3 +276,12 @@ footer p,.footer-names{color:#222}
 /* Match transportation headings to the venue title typography. */
 .transport-detailed h3{margin:21px 0 7px;color:#222;font-family:var(--serif);font-size:14px;font-weight:600;letter-spacing:.02em;line-height:1.95}
 .transport-detailed .transport-lead{font-family:var(--serif);font-size:13px;line-height:1.8;letter-spacing:0}
+
+/* Use the same venue-title font and point size throughout the direction guide. */
+.transport.transport-detailed,.transport-detailed h3,.transport-detailed h4,.transport-detailed p,.transport-detailed strong,.transport-detailed .address-box,.transport-detailed .address-box span,.transport-detailed .address-box strong,.transport-detailed .route-pill{font-family:var(--serif);font-size:14px;letter-spacing:0}
+.transport-detailed h3{font-weight:600;line-height:1.95}
+.transport-detailed .transport-lead,.transport-group>p{font-size:14px;line-height:1.95}
+.transport-block h4{font-size:14px;font-weight:600;line-height:1.95}
+.transport-block p{font-size:14px;line-height:1.95}
+.address-box span,.address-box strong{font-size:14px;line-height:1.8}
+.route-pill{font-size:14px;font-weight:600}
