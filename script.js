@@ -132,21 +132,14 @@ function renderPhotos() {
   const grid = document.querySelector('#gallery-grid');
   if (!grid) return;
   wedding.photos.slice(0, 9).forEach((photo, index) => {
-    const button = document.createElement('button');
-    button.className = 'gallery-item is-visible';
-    button.type = 'button';
-    button.setAttribute('aria-label', `${index + 1}번 사진 크게 보기`);
+    const item = document.createElement('figure');
+    item.className = 'gallery-item is-visible';
     const image = document.createElement('img');
     image.alt = photo.alt;
     image.src = photo.src;
     image.loading = index < 3 ? 'eager' : 'lazy';
-    button.append(image);
-    grid.append(button);
-    button.addEventListener('click', () => {
-      showPhoto(index);
-      dialog.showModal();
-      document.body.style.overflow = 'hidden';
-    });
+    item.append(image);
+    grid.append(item);
   });
   galleryImage = grid.querySelector('img');
 }
