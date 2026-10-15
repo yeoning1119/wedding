@@ -272,3 +272,7 @@ footer p,.footer-names{color:#222}
 .subway-line strong{font-weight:700}
 .subway-shuttle{padding-left:27px!important;margin-top:1px!important}
 @media(max-width:350px){.transport-card{padding-left:14px;padding-right:14px}.transport-block h4{font-size:15px}.transport-block p,.transport-group>p{font-size:13px}.route-line{gap:9px}.route-pill{width:68px;font-size:14px}}
+
+/* Match transportation headings to the venue title typography. */
+.transport-detailed h3{margin:21px 0 7px;color:#222;font-family:var(--serif);font-size:14px;font-weight:600;letter-spacing:.02em;line-height:1.95}
+.transport-detailed .transport-lead{font-family:var(--serif);font-size:13px;line-height:1.8;letter-spacing:0}
