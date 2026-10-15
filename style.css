@@ -297,3 +297,9 @@ footer p,.footer-names{color:#222}
 .route-green-text{color:#2ca85b}
 .route-colon{color:#222}
 .route-line>span:last-child{min-width:0}
+
+
+/* Restore the recognizable colors of the navigation app icons. */
+.naver-icon{filter:none;background:linear-gradient(145deg,#19c463 0 56%,#2f74e8 57%);color:#fff}
+.tmap-icon{filter:none;background:linear-gradient(135deg,#ff4db6 0 34%,#18c8bf 35% 66%,#6251bb 67%);color:#fff}
+.kakao-icon{filter:none;background:#ffe438;color:#1a1a1a}
