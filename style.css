@@ -241,3 +241,34 @@ footer p,.footer-names{color:#222}
 .map-destination .nav-links{margin:12px 0 0}
 .kakao-share{font:12px/1.4 var(--serif);min-height:42px;padding:8px 14px}
 .kakao-share span{font-size:15px}
+
+/* Direction guide styled after the supplied parking and transit reference. */
+.transport.transport-detailed{margin-top:34px;text-align:left;font-family:var(--sans)}
+.transport-detailed h3{margin:26px 0 7px;color:var(--ink);font-family:var(--sans);font-size:21px;font-weight:700;letter-spacing:-.04em;line-height:1.4}
+.transport-detailed .transport-lead{margin:0 0 17px;color:var(--ink);font-size:15px;line-height:1.7;letter-spacing:-.04em}
+.transport-card{padding:22px 18px 20px;border:1px solid #e2dfdc;border-radius:18px;background:#fffefd;box-shadow:0 2px 8px #463e3a08}
+.transport-block{display:grid;grid-template-columns:18px minmax(0,1fr);gap:12px;align-items:start}
+.transport-block h4{margin:0 0 4px;color:var(--ink);font-family:var(--sans);font-size:16px;font-weight:700;letter-spacing:-.045em;line-height:1.5}
+.transport-block p{margin:0;color:#555052;font-family:var(--sans);font-size:14px;line-height:1.75;letter-spacing:-.035em}
+.transport-dot{display:block;width:15px;height:15px;margin-top:5px;border-radius:50%}
+.dot-green{background:#52b976}.dot-orange{background:#f4ad28}.dot-blue{background:#1687d4}
+.accent-green{color:#3d9a5f}.accent-blue{color:#0e79c3}
+.address-box{display:flex;align-items:center;gap:13px;margin:17px 0 5px;padding:13px 16px;border-radius:14px;background:#f0f6f1}
+.address-box>div{display:flex;flex-direction:column;gap:1px;min-width:0}
+.address-box span{color:#747675;font-size:12px;line-height:1.5}
+.address-box strong{color:var(--ink);font-size:14px;font-weight:600;letter-spacing:-.035em;line-height:1.55}
+.address-pin{position:relative;display:block;width:23px;height:29px;flex:none;border-radius:14px 14px 14px 14px;background:#4aa967;clip-path:polygon(50% 100%,7% 48%,7% 30%,20% 11%,38% 2%,62% 2%,80% 11%,93% 30%,93% 48%)}
+.address-pin:after{content:'';position:absolute;left:7px;top:7px;width:9px;height:9px;border-radius:50%;background:#eaf4ec}
+.transport-divider{height:1px;margin:21px 0;border-top:1px dashed #ddd9d5}
+.transport-group{padding-top:23px;border-top:1px dashed #ddd9d5}
+.transport-group h3{margin:0 0 8px}
+.transport-group>p{margin:0;color:#555052;font-size:15px;line-height:1.75;letter-spacing:-.04em}
+.route-line{display:flex;align-items:center;gap:13px;margin-top:7px!important}
+.route-pill{display:inline-flex;align-items:center;justify-content:center;width:78px;min-height:34px;border-radius:18px;color:white;font-size:15px;font-weight:700;letter-spacing:-.04em;line-height:1}
+.route-blue{background:#2f71e8}.route-green{background:#51bd70}
+.subway-group{margin-top:23px}
+.subway-line{display:flex;align-items:flex-start;gap:12px}
+.subway-line .transport-dot{margin-top:8px}
+.subway-line strong{font-weight:700}
+.subway-shuttle{padding-left:27px!important;margin-top:1px!important}
+@media(max-width:350px){.transport-card{padding-left:14px;padding-right:14px}.transport-block h4{font-size:15px}.transport-block p,.transport-group>p{font-size:13px}.route-line{gap:9px}.route-pill{width:68px;font-size:14px}}
